@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/nydl39fg2tc6uavp?svg=true)](https://ci.appveyor.com/project/patvit/my-myhighlight)
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

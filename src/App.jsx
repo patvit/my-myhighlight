@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import "./App.css";
+import { useState } from 'react'
+import "./App.css"
 
 export function sortView(Component) {
 
-    return function (props) {
+    return function sV(props) {
         if (props.views > 1000) {
             return (
                 <Popular><Component {...props} /></Popular>
-            );
+            )
         }
         if (props.views < 100) {
             return (
                 <New><Component {...props} /></New>
-            );
+            )
         } else {
             return (
                 <Component {...props} />  
-            );
+            )
         }
     }
 }
@@ -51,28 +51,28 @@ function Article(props) {
 function Video(props) {
     return (
         <div className="item item-video">
-            <iframe src={props.url} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src={props.url} border="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             <p className="views">Просмотров: {props.views}</p>
         </div>
     )
-};
+}
 
 function List(props) {
     return props.list.map((item, i) => {
-        let Component;
+        let Component
         switch (item.type) {
             case 'video':
-                Component = sortView(Video);
-                return (<Component key={Date.now() + i*3} {...item} />);
+                Component = sortView(Video)
+                return (<Component key={Date.now() + i*3} {...item} />)
             case 'article':
-                Component = sortView(Article);
-                return (<Component key={Date.now() + i*7} {...item} />);
+                Component = sortView(Article)
+                return (<Component key={Date.now() + i*7} {...item} />)
         }
-    });
-};
+    })
+}
 
 export default function App() {
-    const [list, setList] = useState([
+    const [list] = useState([
         {
             type: 'video',
             url: 'https://www.youtube.com/embed/rN6nlNC9WQA?rel=0&amp;controls=0&amp;showinfo=0',
@@ -103,9 +103,9 @@ export default function App() {
             title: 'Кот Бегемот обладает невероятной...',
             views: 12,
         },
-    ]);
+    ])
 
     return (
         <List list={list} />
-    );
+    )
 }
